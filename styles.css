@@ -102,12 +102,12 @@ button:active{
     background-color: rgb(72, 134, 204);
 }
 
-#spanTwoHor{
+.spanTwoHor{
     grid-row: 5;
     grid-column: 1 / 3;
 }
 
-#equals{
+.spanTwoVer{
     grid-row: 4 / 6;
     grid-column: 4;
 }

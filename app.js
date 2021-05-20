@@ -26,7 +26,6 @@ clear.addEventListener('click', ()=>{
     } else {
         currentNum.innerHTML = '0';
     }
-    currentOperand = '';
     currentSum = '';
 })
 
