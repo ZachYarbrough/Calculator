@@ -20,6 +20,16 @@ for(let i = 0; i < numbers.length; i++){
     })
 }
 
+for(let i = 0; i < operands.length; i++){
+    operands[i].addEventListener('click', ()=>{
+        prevNum.innerHTML = currentNum.innerHTML;
+        currentNum.innerHTML = '0';
+        currentOperand = operands[i].innerHTML;
+        if(operands[i].innerHTML == '-' && currentNum.innerHTML == '0')
+            currentNum.innerHTML = '-';
+    })
+}
+
 clear.addEventListener('click', ()=>{
     if(currentNum == '0'){
         prevNum.innerHTML = '0';
@@ -35,14 +45,6 @@ allClear.addEventListener('click', ()=>{
     currentOperand = '';
     currentSum = '';
 })
-
-for(let i = 0; i < operands.length; i++){
-    operands[i].addEventListener('click', ()=>{
-        prevNum.innerHTML = currentNum.innerHTML;
-        currentNum.innerHTML = '0';
-        currentOperand = operands[i].innerHTML;
-    })
-}
 
 equals.addEventListener('click', ()=> {
     switch(currentOperand){
@@ -61,6 +63,8 @@ equals.addEventListener('click', ()=> {
         default:
             break;
     }
+    if(currentOperand == '')
+        currentSum = currentNum.innerHTML;
     prevNum.innerHTML = '0';
     currentNum.innerHTML = currentSum;
 })
