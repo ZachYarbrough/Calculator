@@ -22,11 +22,13 @@ for(let i = 0; i < numbers.length; i++){
 
 for(let i = 0; i < operands.length; i++){
     operands[i].addEventListener('click', ()=>{
-        prevNum.innerHTML = currentNum.innerHTML;
-        currentNum.innerHTML = '0';
-        currentOperand = operands[i].innerHTML;
-        if(operands[i].innerHTML == '-' && currentNum.innerHTML == '0')
+        if(operands[i].innerHTML == '-' && currentNum.innerHTML == '0'){
             currentNum.innerHTML = '-';
+        } else {
+            prevNum.innerHTML = currentNum.innerHTML;
+            currentNum.innerHTML = '0';
+            currentOperand = operands[i].innerHTML;
+        }
     })
 }
 
