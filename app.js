@@ -24,6 +24,11 @@ for(let i = 0; i < operands.length; i++){
     operands[i].addEventListener('click', ()=>{
         if(operands[i].innerHTML == '-' && currentNum.innerHTML == '0'){
             currentNum.innerHTML = '-';
+        } else if(currentOperand != ''){
+            useOperand();
+            currentOperand = operands[i].innerHTML;
+            prevNum.innerHTML = currentSum;
+            currentNum.innerHTML = '0';
         } else {
             prevNum.innerHTML = currentNum.innerHTML;
             currentNum.innerHTML = '0';
@@ -49,6 +54,18 @@ allClear.addEventListener('click', ()=>{
 })
 
 equals.addEventListener('click', ()=> {
+    if(currentNum.innerHTML == '-'){
+        currentNum.innerHTML = '-1';
+        currentOperand = 'x';
+    }
+    useOperand();
+    if(currentOperand == '')
+        currentSum = currentNum.innerHTML;
+    prevNum.innerHTML = '0';
+    currentNum.innerHTML = currentSum;
+})
+
+let useOperand = () => {
     switch(currentOperand){
         case '+': 
             currentSum = parseFloat(prevNum.innerHTML) + parseFloat(currentNum.innerHTML);
@@ -65,8 +82,4 @@ equals.addEventListener('click', ()=> {
         default:
             break;
     }
-    if(currentOperand == '')
-        currentSum = currentNum.innerHTML;
-    prevNum.innerHTML = '0';
-    currentNum.innerHTML = currentSum;
-})
+}
