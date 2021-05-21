@@ -12,6 +12,8 @@ let allClear = document.getElementById('allClear');
 
 let equal = document.getElementById('equals');
 
+let justSolved = false;
+
 for(let i = 0; i < numbers.length; i++){
     numbers[i].addEventListener('click', ()=>{
         currentNum.innerHTML.includes('.') && numbers[i].innerHTML.includes('.') ? 
@@ -24,7 +26,7 @@ for(let i = 0; i < operands.length; i++){
     operands[i].addEventListener('click', ()=>{
         if(operands[i].innerHTML == '-' && currentNum.innerHTML == '0'){
             currentNum.innerHTML = '-';
-        } else if(currentOperand != ''){
+        } else if(currentOperand != '' && !justSolved){
             useOperand();
             currentOperand = operands[i].innerHTML;
             prevNum.innerHTML = currentSum;
@@ -34,6 +36,7 @@ for(let i = 0; i < operands.length; i++){
             currentNum.innerHTML = '0';
             currentOperand = operands[i].innerHTML;
         }
+        justSolved = false;
     })
 }
 
@@ -54,7 +57,7 @@ allClear.addEventListener('click', ()=>{
 })
 
 equals.addEventListener('click', ()=> {
-    if(currentNum.innerHTML == '-'){
+    if(currentNum.innerHTML == '-') {
         currentNum.innerHTML = '-1';
         currentOperand = 'x';
     }
@@ -63,6 +66,7 @@ equals.addEventListener('click', ()=> {
         currentSum = currentNum.innerHTML;
     prevNum.innerHTML = '0';
     currentNum.innerHTML = currentSum;
+    justSolved = true;
 })
 
 let useOperand = () => {
