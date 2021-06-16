@@ -19,6 +19,8 @@ for(let i = 0; i < numbers.length; i++){
         currentNum.innerHTML.includes('.') && numbers[i].innerHTML.includes('.') ? 
             currentNum.innerHtml = currentNum.innerHTML : currentNum.innerHTML == '0' ? 
                 currentNum.innerHTML = `${numbers[i].innerHTML}` : currentNum.innerHTML = `${currentNum.innerHTML}${numbers[i].innerHTML}`;
+        if(justSolved)
+            currentNum.innerHTML = numbers[i].innerHTML;
     })
 }
 
