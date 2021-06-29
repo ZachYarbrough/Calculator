@@ -16,11 +16,15 @@ let justSolved = false;
 
 for(let i = 0; i < numbers.length; i++){
     numbers[i].addEventListener('click', ()=>{
-        currentNum.innerHTML.includes('.') && numbers[i].innerHTML.includes('.') ? 
-            currentNum.innerHtml = currentNum.innerHTML : currentNum.innerHTML == '0' ? 
-                currentNum.innerHTML = `${numbers[i].innerHTML}` : currentNum.innerHTML = `${currentNum.innerHTML}${numbers[i].innerHTML}`;
+        if(currentNum.innerHTML.includes('.') && numbers[i].innerHTML.includes('.')) {
+            currentNum.innerHTML = `${numbers[i].innerHTML}`
+        } else if (currentNum.innerHTML == '0') {
+            currentNum.innerHTML = `${numbers[i].innerHTML}`
+        } else {
+            currentNum.innerHTML = `${currentNum.innerHTML}${numbers[i].innerHTML}`
+        }
         if(justSolved)
-            currentNum.innerHTML = numbers[i].innerHTML;
+            currentNum.innerHTML = currentNum.innerHTML;
     })
 }
 
